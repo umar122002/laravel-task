@@ -50,7 +50,6 @@ Run the development server: `php artisan serve`
 ```
 
 ### Create a new job
-
 - **Endpoint:** `/api/jobs`
 - **Method:** `POST`
 - **Description:** Create new job listing
@@ -76,8 +75,8 @@ Run the development server: `php artisan serve`
   "user_id": 1
 }
 ```
-### Get a job by ID
 
+### Get a job by ID
 - **Endpoint:** `/api/jobs/{id}`
 - **Method:** `GET`
 - **Description:** Retrieves a job by its ID.
@@ -92,19 +91,19 @@ Run the development server: `php artisan serve`
   "salary": 60000
 }
 ```
-Update a job
 
-URL: /api/jobs/{id}
-Method: PUT
-Request:
-Body: (Any field is optional)
-
+### Update a job
+- **Endpoint**: `/api/jobs/{id}`
+- **Method:** `PUT`
+#### Request Body:
+```json
 {
   "title": "Lead Developer",
   "description": "Lead web development projects"
 }
-Response:
-
+```
+#### Response Body:
+```json
 {
   "id": 1,
   "title": "Lead Developer",
@@ -113,30 +112,32 @@ Response:
   "location": "New York",
   "salary": 60000
 }
-Delete a job
+```
 
-URL: /api/jobs/{id}
-Method: DELETE
-Description: Deletes a job by its ID.
-Response:
-
+### Delete a job
+- **Endpoint:** `/api/jobs/{id}`
+- **Method:** `DELETE`
+- **Description:** Deletes a job by its ID.
+#### Response Body:
+```json
 {
   "message": "Job deleted successfully",
   "job_id": 1
 }
-Job Application Endpoints
-Apply for a job
+```
 
-URL: /api/jobs/{id}/apply
-Method: POST
-Request:
-Body: (Optional)
-
+### Job Application
+- **Endpoint:** `/api/jobs/{id}/apply`
+- **Method:** `POST`
+- **Description:** Apply for job
+- **Request Body:**
+```json
 {
   "cover_letter": "I am a great fit for this role because..."
 }
-Response:
-
+```
+#### Response:
+```json
 {
   "message": "Application submitted successfully",
   "application": {
@@ -147,13 +148,14 @@ Response:
     "cover_letter": "I am a great fit for this role because..."
   }
 }
-View my job applications
+```
 
-URL: /api/my-applications
-Method: GET
-Description: Retrieves the jobs the authenticated user has applied to.
-Response:
-
+### View my job applications
+- **Endpoint:** `/api/my-applications`
+- **Method:** `GET`
+- **Description:** Retrieves the jobs the authenticated user has applied to.
+#### Response:
+```json
 [
   {
     "id": 1,
@@ -162,15 +164,15 @@ Response:
     "status": "pending",
     "cover_letter": "I am a great fit for this role because..."
   },
-  ...
 ]
-View job applications for a specific job
+```
 
-URL: /api/jobs/{id}/applications
-Method: GET
-Description: Retrieves all applications for a specific job.
-Response:
-
+### View job applications for a specific job
+- **Endpoint:** `/api/jobs/{id}/applications`
+- **Method:** `GET`
+- **Description:** Retrieves all applications for a specific job.
+#### Response:
+```json
 {
   "id": 1,
   "title": "Software Developer",
@@ -183,6 +185,7 @@ Response:
     }
   ]
 }
+```
 
-Testing the API
-You can test the API using tools like Postman
+## Testing the API
+You can test the API using tools like `Postman`
