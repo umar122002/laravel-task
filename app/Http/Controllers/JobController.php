@@ -93,7 +93,7 @@ class JobController extends Controller
             return response()->json([
                 'message' => 'Job deleted successfully',
                 'job_id' => $id
-            ], 200); 
+            ], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => 'Job not found'], 404);
         } catch (Exception $e) {

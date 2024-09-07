@@ -13,22 +13,22 @@ class JobApplicationController extends Controller
     public function apply(Request $request, $jobId)
     {
         try {
-            
+
             $request->validate([
                 'cover_letter' => 'nullable|string',
             ]);
 
             $job = Job::findOrFail($jobId);
 
-           
+
             if ($request->user()->jobsApplied()->where('job_id', $jobId)->exists()) {
                 return response()->json(['message' => 'You have already applied to this job'], 400);
             }
 
-           
+
             $request->user()->jobsApplied()->attach($jobId, [
                 'cover_letter' => $request->cover_letter,
-                'status' => 'pending', 
+                'status' => 'pending',
             ]);
 
             $application = $request->user()->jobsApplied()->where('job_id', $jobId)->first();
@@ -67,7 +67,7 @@ class JobApplicationController extends Controller
     {
         try {
             $job = Job::where('id', $jobId)
-                      ->firstOrFail();
+                ->firstOrFail();
 
             return response()->json($job);
         } catch (ModelNotFoundException $e) {
