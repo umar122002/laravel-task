@@ -49,7 +49,7 @@ Run the development server: `php artisan serve`
   "token_type": "Bearer"
 }
 ```
-## Note: After registration, an access token will be generated. You will need to use this token for all subsequent API requests by passing it in the Authorization header.
+### Note: After registration, an access token will be generated. You will need to use this token for all subsequent API requests by passing it in the Authorization header.
 ### Login User
 - **Endpoint:** `/api/login`
 - **Method:** `GET`
@@ -68,7 +68,7 @@ Run the development server: `php artisan serve`
   "token_type": "Bearer"
 }
 ```
-## Note: After login, an access token will be generated. You will need to use this token for all subsequent API requests by passing it in the Authorization header.
+### Note: After login, an access token will be generated. You will need to use this token for all subsequent API requests by passing it in the Authorization header.
 
 ### Get all jobs
 - **Endpoint:** `/api/jobs`
