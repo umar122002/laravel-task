@@ -55,13 +55,14 @@ class JobApplicationController extends Controller
     public function myApplications(Request $request)
     {
         try {
-            $applications = $request->user()->jobsApplied()->with('company')->get();
-
+            $applications = $request->user()->jobsApplied()->get();
+    
             return response()->json($applications);
         } catch (Exception $e) {
             return response()->json(['message' => 'Failed to retrieve applications', 'error' => $e->getMessage()], 500);
         }
     }
+     
 
     public function viewApplications($jobId)
     {
