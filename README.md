@@ -3,7 +3,6 @@ Prerequisites
 PHP >= 8.0
 Composer
 MySQL or any other compatible database
-Laravel >= 9.52
 
 ## Installation Steps
 
