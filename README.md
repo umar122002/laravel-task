@@ -31,11 +31,51 @@ Run database migrations: `php artisan migrate`<br>
 Run the development server: `php artisan serve`
 
 ## API Documentation
+### Register a new User
+- **Endpoint:** `/api/register`
+- **Method:** `POST`
+- **Description:** Registers a new user.
+#### Request Body:
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password"
+}
+```
+#### Response Body:
+```json
+{
+  "access_token": "your_token_here",
+  "token_type": "Bearer"
+}
+```
+## Note: After registration, an access token will be generated. You will need to use this token for all subsequent API requests by passing it in the Authorization header.
+### Login User
+- **Endpoint:** `/api/login`
+- **Method:** `GET`
+- **Description:** Logs in a user and returns an access token.
+#### Request Body:
+```json
+{
+  "email": "john@example.com",
+  "password": "password"
+}
+```
+#### Response Body:
+```json
+{
+  "access_token": "your_token_here",
+  "token_type": "Bearer"
+}
+```
+## Note: After login, an access token will be generated. You will need to use this token for all subsequent API requests by passing it in the Authorization header.
+
 ### Get all jobs
 - **Endpoint:** `/api/jobs`
 - **Method:** `GET`
 - **Description:** Retrieves all job listings.
-#### Response:
+#### Response Body:
 ```json
 [
   {
