@@ -7,7 +7,7 @@ MySQL or any other compatible database
 ## Installation Steps
 
 Clone the repository:
-git clone git@github.com:umar122002/UmarKhanLaravel.git
+git clone `git@github.com:umar122002/UmarKhanLaravel.git`
 cd UmarKhanLaravel
 
 Install dependencies:
