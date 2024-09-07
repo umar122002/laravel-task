@@ -1,66 +1,194 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Setup Instructions
+Prerequisites
+PHP >= 8.0
+Composer
+MySQL or any other compatible database
+Laravel >= 9.52
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Installation Steps
 
-## About Laravel
+Clone the repository:
+git clone git@github.com:umar122002/UmarKhanLaravel.git
+cd UmarKhanLaravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Install dependencies:
+composer install
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Create a .env file: Copy the example .env file:
+cp .env.example .env
+Configure environment settings: Update your .env file with the correct database settings (e.g., MySQL credentials).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Generate an application key:
+php artisan key:generate
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Run database migrations:
+php artisan migrate
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Run the development server:
+php artisan serve
 
-## Laravel Sponsors
+## API Documentation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Endpoints
+Jobs Endpoints
+Get all jobs
 
-### Premium Partners
+URL: /api/jobs
+Method: GET
+Description: Retrieves all job listings.
+Response:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+[
+  {
+    "id": 1,
+    "title": "Software Developer",
+    "description": "Develop web applications",
+    "company": "Tech Company",
+    "location": "New York",
+    "salary": 60000
+  },
+  ...
+]
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Create a new job
 
-## Code of Conduct
+URL: /api/jobs
+Method: POST
+Request:
+Body:
+{
+  "title": "Software Developer",
+  "description": "Develop web applications",
+  "company": "Tech Company",
+  "location": "New York",
+  "salary": 60000
+}
+Response:
+json
+{
+  "id": 1,
+  "title": "Software Developer",
+  "description": "Develop web applications",
+  "company": "Tech Company",
+  "location": "New York",
+  "salary": 60000,
+  "user_id": 1
+}
+Get a job by ID
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+URL: /api/jobs/{id}
+Method: GET
+Description: Retrieves a job by its ID.
+Response:
 
-## Security Vulnerabilities
+{
+  "id": 1,
+  "title": "Software Developer",
+  "description": "Develop web applications",
+  "company": "Tech Company",
+  "location": "New York",
+  "salary": 60000
+}
+Update a job
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+URL: /api/jobs/{id}
+Method: PUT
+Request:
+Body: (Any field is optional)
 
-## License
+{
+  "title": "Lead Developer",
+  "description": "Lead web development projects"
+}
+Response:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+{
+  "id": 1,
+  "title": "Lead Developer",
+  "description": "Lead web development projects",
+  "company": "Tech Company",
+  "location": "New York",
+  "salary": 60000
+}
+Delete a job
+
+URL: /api/jobs/{id}
+Method: DELETE
+Description: Deletes a job by its ID.
+Response:
+
+{
+  "message": "Job deleted successfully",
+  "job_id": 1
+}
+Job Application Endpoints
+Apply for a job
+
+URL: /api/jobs/{id}/apply
+Method: POST
+Request:
+Body: (Optional)
+
+{
+  "cover_letter": "I am a great fit for this role because..."
+}
+Response:
+
+{
+  "message": "Application submitted successfully",
+  "application": {
+    "id": 1,
+    "user_id": 1,
+    "job_id": 1,
+    "status": "pending",
+    "cover_letter": "I am a great fit for this role because..."
+  }
+}
+View my job applications
+
+URL: /api/my-applications
+Method: GET
+Description: Retrieves the jobs the authenticated user has applied to.
+Response:
+
+[
+  {
+    "id": 1,
+    "title": "Software Developer",
+    "company": "Tech Company",
+    "status": "pending",
+    "cover_letter": "I am a great fit for this role because..."
+  },
+  ...
+]
+View job applications for a specific job
+
+URL: /api/jobs/{id}/applications
+Method: GET
+Description: Retrieves all applications for a specific job.
+Response:
+
+{
+  "id": 1,
+  "title": "Software Developer",
+  "applicants": [
+    {
+      "id": 1,
+      "user_id": 2,
+      "status": "pending",
+      "cover_letter": "I am very interested in this position."
+    }
+  ]
+}
+
+Testing the API
+You can test the API using tools like Postman
