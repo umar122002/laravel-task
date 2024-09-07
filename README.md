@@ -18,34 +18,25 @@ Create a .env file: Copy the example .env file:
 cp .env.example .env
 Configure environment settings: Update your .env file with the correct database settings (e.g., MySQL credentials).
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=root
-DB_PASSWORD=
+DB_CONNECTION=mysql<br>
+DB_HOST=127.0.0.1<br>
+DB_PORT=3306<br>
+DB_DATABASE=laravel<br>
+DB_USERNAME=root<br>
+DB_PASSWORD=<br>
 
 
-Generate an application key:
-php artisan key:generate
-
-Run database migrations:
-php artisan migrate
-
-Run the development server:
-php artisan serve
+Generate an application key: `php artisan key:generate`<br>
+Run database migrations: `php artisan migrate`<br>
+Run the development server: `php artisan serve`
 
 ## API Documentation
-
-Endpoints
-Jobs Endpoints
-Get all jobs
-
-URL: /api/jobs
-Method: GET
-Description: Retrieves all job listings.
-Response:
-
+### Get all jobs
+- **Endpoint:** `/api/jobs`
+- **Method:** `GET`
+- **Description:** Retrieves all job listings.
+#### Response:
+```json
 [
   {
     "id": 1,
@@ -55,16 +46,16 @@ Response:
     "location": "New York",
     "salary": 60000
   },
-  ...
 ]
+```
 
+### Create a new job
 
-Create a new job
-
-URL: /api/jobs
-Method: POST
-Request:
-Body:
+- **Endpoint:** `/api/jobs`
+- **Method:** `POST`
+- **Description:** Create new job listing
+ #### Request Body:
+```json
 {
   "title": "Software Developer",
   "description": "Develop web applications",
@@ -72,8 +63,9 @@ Body:
   "location": "New York",
   "salary": 60000
 }
-Response:
-json
+```
+#### Response Body:
+```json
 {
   "id": 1,
   "title": "Software Developer",
@@ -83,13 +75,14 @@ json
   "salary": 60000,
   "user_id": 1
 }
-Get a job by ID
+```
+### Get a job by ID
 
-URL: /api/jobs/{id}
-Method: GET
-Description: Retrieves a job by its ID.
-Response:
-
+- **Endpoint:** `/api/jobs/{id}`
+- **Method:** `GET`
+- **Description:** Retrieves a job by its ID.
+### Response Body:
+```json
 {
   "id": 1,
   "title": "Software Developer",
@@ -98,6 +91,7 @@ Response:
   "location": "New York",
   "salary": 60000
 }
+```
 Update a job
 
 URL: /api/jobs/{id}
